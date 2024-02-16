@@ -9,11 +9,11 @@ const Ticket = new mongoose.Schema({
         unique: true,
     },
     EventID:{
-         type:Event,
+         type:[Event.schema],
          required: true
     },
     UserID:{
-        type:User,
+        type:[User.schema],
         required: true
    },
    Quantity:{

@@ -20,6 +20,21 @@ const updateEvent = async (req, res) => {
         res.status(422).json({message: 'Error Updating Event', err: err.message})
     }
 }
+const getEventDetials = async(req,res)=>{
+    const {id} = req.params;
+
+    try
+    {
+      const findEvent = await Event.findById(id);
+      res.json(findEvent)
+    }
+    catch(error)
+    {
+     return res.status(401).send({error: ' There is no Match, Please try again !'})
+    }
+}
+
+
 
 const getEvents = async (_, res) => {
     try {
@@ -75,4 +90,5 @@ const getPopularEvent = async (_, res) => {
  }
  
 
- module.exports = { addNewEvent, updateEvent,getEvents, getPopularEvent, getFeaturedEvent, getSliderEvent }
+ module.exports = { addNewEvent, updateEvent,getEvents, getPopularEvent, getFeaturedEvent, getSliderEvent, getEventDetials}
+
