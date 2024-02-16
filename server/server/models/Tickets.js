@@ -2,19 +2,19 @@ const mongoose = require("mongoose");
 const User = require("./User");
 const Event = require("./Event");
 
-const Ticket = new mongoose.Schema({
+const TicketSchema = new mongoose.Schema({
     Ticket:{
         type:Number,
         required: true,
         unique: true,
     },
     EventID:{
-         type:Event,
+         type:[Event.Schema],
          required: true,
          default:{}
     },
     UserID:{
-        type:User,
+        type: [User.Schema],
         required: true,
         default:{}
    },
@@ -29,4 +29,7 @@ const Ticket = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("Ticket", Ticket);
+
+
+const Ticket = mongoose.model('Ticket', TicketSchema)
+module.exports = Ticket

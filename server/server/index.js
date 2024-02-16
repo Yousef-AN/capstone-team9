@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const EventRouter = require("./models/routes/EventRoute.js")
+
+
 require("dotenv").config();
 
 const connectToMongo = require("./db/connection");
@@ -15,12 +16,13 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use("/api/product",EventRouter)
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
   connectToMongo();
 });
-
+const eventRouter = require("./routes/EventRoute");
+//app.use("/event",EventRouter);
 
 app.get("/test", (req, res) => {
   res.json(
