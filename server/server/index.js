@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const EventRouter = require("./models/routes/EventSort.js")
+const EventRouter = require("./models/routes/EventRoute.js")
 require("dotenv").config();
 
 const connectToMongo = require("./db/connection");

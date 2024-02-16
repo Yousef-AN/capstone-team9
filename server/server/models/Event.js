@@ -3,9 +3,9 @@ const User = require("./User");
 
 const Event = new mongoose.Schema({
     EventID:{
-    type:Number,
-    required: true,
-    unique: true,
+         type:Number,
+         required: true,
+         unique: true,
     },
     Title: {
     type: String,
@@ -19,14 +19,13 @@ const Event = new mongoose.Schema({
   StartDateTime: {
     type: Date,
     required: true,
-    default: Date.now,
   },
   EndDateTime: {
     type: String,
     required: true,
   },
   Creator: {
-    type: [User.schema]
+    type: User
   },
   Category:{
     type:String,
@@ -41,12 +40,10 @@ const Event = new mongoose.Schema({
     required:true
   },
   Featured:{
-    type:Boolean,
-    default:false
+    type:Boolean
   },
   Poplar:{
-    type:Boolean,
-    default:false
+    type:Boolean
   },
   Price:{
     type:Number,
@@ -57,13 +54,7 @@ const Event = new mongoose.Schema({
     type:Number,
     min: 0,
     required:true
-  },
-  // added by Feda 
-  rating: {
-    type: Number,
-    min: 0,
-    max: 5,
-  },
+  }
 });
 
 module.exports = mongoose.model("Event", Event);
