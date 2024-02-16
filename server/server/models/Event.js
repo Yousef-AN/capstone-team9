@@ -41,10 +41,12 @@ const Event = new mongoose.Schema({
     required:true
   },
   Featured:{
-    type:Boolean
+    type:Boolean,
+    default:false
   },
   Poplar:{
-    type:Boolean
+    type:Boolean,
+    default:false
   },
   Price:{
     type:Number,
