@@ -21,6 +21,19 @@ const updateEvent = async (req, res) => {
     }
 }
 
+const getEvents = async (_, res) => {
+    try {
+    
+        const lstEvents = await Event.find({ EndDateTime: { $gt: new Date() } })
+        .sort({ StartDateTime:  -1 }); // Sort by Start Date Time in descending order
+        
+             res.status(200).json({ message: 'List of Events Results', events: lstEvents });
+ } 
+ catch (err) {
+     res.status(422).json({ message: 'Error while getting events list', error: err.message });
+ }
+}
+
 const getPopularEvent = async (_, res) => {
     try {
     
@@ -62,4 +75,4 @@ const getPopularEvent = async (_, res) => {
  }
  
 
- module.exports = { addNewEvent, updateEvent, getPopularEvent, getFeaturedEvent, getSliderEvent }
+ module.exports = { addNewEvent, updateEvent,getEvents, getPopularEvent, getFeaturedEvent, getSliderEvent }
