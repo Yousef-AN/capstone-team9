@@ -1,30 +1,33 @@
 const mongoose = require("mongoose");
-const User = require("./User");
-const Event = require("./Event");
+const User = require("./user");
+const Event = require("./event");
 
-const Ticket = new mongoose.Schema({
-    Ticket:{
-        type:Number,
+const TicketSchema = new mongoose.Schema({
+    Ticket: {
+        type: Number,
         required: true,
         unique: true,
     },
-    EventID:{
-         type:Event,
-         required: true
+    EventID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Event",
+        required: true,
     },
-    UserID:{
-        type:User,
-        required: true
-   },
-   Quantity:{
-    type:Number,
-    min: 0,
-    required:true
-  },
-  PurchasedDate :{
-    type:Date,
-    required:true
-  }
+    UserID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    },
+    Quantity: {
+        type: Number,
+        min: 0,
+        required: true,
+    },
+    PurchasedDate: {
+        type: Date,
+        required: true,
+    }
 });
 
-module.exports = mongoose.model("Ticket", Ticket);
+// Create and export the Ticket model
+module.exports = mongoose.model("Ticket", TicketSchema);
