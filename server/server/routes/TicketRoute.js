@@ -4,14 +4,14 @@ const ticketController = require('../controllers/ticket');
 
 const router = express.Router();
 
-// Move the route handling logic here
-router.route('/:ticketId')
+// This route is for handling GET requests to retrieve details of a specific ticket by its ID
+router.get('/:GetticketId', ticketController.getTicketById);
 
-router.get(ticketController.getTicketById)
+// This route is for handling PUT requests to update details of a specific ticket by its ID
+router.put('/:UpdateticketId', ticketController.updateTicketById);
 
-router.put(ticketController.updateTicketById)
-
-router.delete(ticketController.deleteTicketById);
+// This route is for handling DELETE requests to delete a specific ticket by its ID
+router.delete('/:DeleteticketId', ticketController.deleteTicketById);
 
 
 module.exports = router;
