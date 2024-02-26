@@ -6,9 +6,12 @@ const router = express.Router();
 
 // Move the route handling logic here
 router.route('/:ticketId')
-    .get(ticketController.getTicketById)
-    .put(ticketController.updateTicketById)
-    .delete(ticketController.deleteTicketById);
+
+router.get(ticketController.getTicketById)
+
+router.put(ticketController.updateTicketById)
+
+router.delete(ticketController.deleteTicketById);
 
 
 module.exports = router;
