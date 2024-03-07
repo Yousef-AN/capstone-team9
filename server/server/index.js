@@ -1,6 +1,8 @@
+const express = require("express");
+const cors = require("cors");
+const eventRouter = require("./routes/EventRoute");
+const userRouter = require("./routes/UserRoute");
 
-const express = require('express');
-const cors = require('cors');
 const mongoose = require('mongoose');
 const connectToMongo = require('./db/connection');
 
@@ -29,6 +31,9 @@ app.get("/test", (req, res) => {
         "Server connection to client works!! Good Luck with your capstones :D"
     );
 });
+
+app.use("/event",eventRouter);
+app.use("/user",userRouter);
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const User = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     UserID:{
          type:Number,
          required: true,
@@ -43,4 +43,5 @@ const User = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("User", User);
+const User = mongoose.model('User', UserSchema)
+module.exports = User
